@@ -1,0 +1,9 @@
+Lab 6:
+Write a structure for student having Id, Name and Grades (for 5 subjects). Implement:
+Function that Fill a student
+Function that Print a student
+Function that Calculate the Sum of each student
+Write a program for:
+1 Student
+5 Students
+N Students where N is read input from user
