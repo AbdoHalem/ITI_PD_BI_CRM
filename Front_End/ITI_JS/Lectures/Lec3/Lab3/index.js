@@ -124,32 +124,55 @@ let students = [{name: "Halem", degree: 95},
 //& /////////////////////////////////////////////////
 
 //? Task6
-//* solution 1 --> arguments object
-function reverseParam(){
-    let args = Array.from(arguments);
-    let reversed = args.reverse();
-    return reversed;
-}
-console.log(reverseParam(1,2,3,4,5));
-//* solution 2 --> rest parameters
-const reverseParam2 = (...args)=>{
-    return args.reverse();
-}
-console.log(reverseParam2(1,2,3,4,5));
+// //& B.1
+// //* solution 1 --> arguments object
+// function reverseParam(){
+//     let args = Array.from(arguments);
+//     let reversed = args.reverse();
+//     return reversed;
+// }
+// console.log(reverseParam(1,2,3,4,5));
+// //* solution 2 --> rest parameters
+// const reverseParam2 = (...args)=>{
+//     return args.reverse();
+// }
+// console.log(reverseParam2(1,2,3,4,5));
 
-function func(a, b){
-    if(arguments.length !== 2){
-        throw new Error("You should enter two arguments");
+// //& B.2
+// function func(a, b){
+//     if(arguments.length !== 2){
+//         throw new Error("You should enter two arguments");
+//     }
+//     else{
+//         console.log(a + b);
+//     }
+// }
+// try{
+//     func(1, 2)
+//     func(1);
+// }catch(err){
+//     console.error(err);
+// }
+
+//& B.3
+function sumAll(...args){
+    let sum = 0;
+    if(args.length === 0){
+        throw new Error("You should enter at least one argument!");
+    }else if(args.some((i) => typeof i !== 'number')){
+        throw new Error("All arguments should be numbers only!");
     }
     else{
-        console.log(a + b);
+        for(let num of args){
+            sum += num;
+        }
     }
+    return sum;
 }
-
 try{
-    func(1, 2)
-    func(1);
+    console.log(sumAll(1,2,3,4,5));
+    console.log(sumAll());
+    console.log(sumAll(1,2,'hi',4));
 }catch(err){
     console.error(err);
 }
-
