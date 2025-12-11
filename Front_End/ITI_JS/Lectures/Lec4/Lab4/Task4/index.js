@@ -18,7 +18,6 @@ radioButtons.forEach((radioButton) => {
     radio.value = radioButton.value;
     radio.id = radioButton.value;
 
-    // إضافة event listener لكل radio button
     radio.addEventListener("change", handleRadioChange);
 
     const label = document.createElement("label");
@@ -33,7 +32,6 @@ radioButtons.forEach((radioButton) => {
 function handleRadioChange() {
     const selectedStyle = document.querySelector('input[name="style"]:checked').value;
     
-    // تطبيق الـ styles على الـ input box
     if (selectedStyle === "bold") {
         text.style.fontWeight = "bold";
         text.style.color = "black";
