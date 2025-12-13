@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="input-wrapper name-container">
+            <input type="text" id="name-text" placeholder="Enter your full name">
+            <span id="name-error">Name is not valid (Alphabetic only)</span>
+        </div>
+
+        <div class="input-wrapper email-container">
+            <input type="email" id="email-text" placeholder="Enter your email" required>
+            <span id="email-error">Email is not valid</span>
+        </div>
+
+        <div class="input-wrapper">
+            <select id="city-select">
+                <option value="" disabled selected>-- Select City --</option>
+                <option value="cairo">Cairo</option>
+                <option value="alex">Alexandria</option>
+                <option value="giza">Giza</option>
+                <option value="mansoura">Mansoura</option>
+            </select>
+            <span style="visibility: hidden;">placeholder</span> 
+        </div>
+
+        <div class="input-wrapper">
+            <input type="password" id="password-text" placeholder="Enter your password">
+            <span style="visibility: hidden;">placeholder</span>
+        </div>
+
+        <div class="input-wrapper confirm-password-container">
+            <input type="password" id="confirm-password-text" placeholder="Confirm your password">
+            <span id="confirm-password-error">Passwords do not match</span>
+        </div>
+
+        <div class="input-wrapper checkbox-container">
+            <input type="checkbox" id="checkbox-text" value="Agree">
+            <label for="checkbox-text">I agree to the terms and conditions</label>
+        </div>
+
+        <form class="container" id="regForm">
+            <button id="submit-button" type="submit">Register</button>
+        </form>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

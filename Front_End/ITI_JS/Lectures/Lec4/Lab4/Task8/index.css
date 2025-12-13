@@ -1,0 +1,57 @@
+.input-wrapper {
+    position: relative;  
+    display: flex;
+    justify-content: center; 
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+    gap: 15px; 
+}
+
+.container span {
+    color: red;
+    display: none;
+    font-size: 16px;
+    align-self: center;
+    position: absolute; 
+    left: calc(50% + 160px);
+    margin-left: 10PX;
+    text-align: center;
+}
+
+.container input, 
+.container select, 
+.container button {
+    width: 300px; 
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.container input[type="checkbox"] {
+    width: auto; 
+    align-self: center;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed; 
+    opacity: 0.7;
+}
+
+button:enabled {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Successful Registration</title>
+        <style>
+        body { 
+            overflow-y: scroll;
+            margin: 0;
+        }
+    </style>
+    </head>
+    <body>
+        <h3>Example: innerText vs textContent</h3>
+        <div id="example">
+            This is <span>visible text</span>
+            <span style="display: none;"> and this is hidden text</span>
+        </div>
+
+        <script>
+            let element = document.getElementById("example");
+            console.log("innerText output: " + element.innerText); 
+            console.log("textContent output: " + element.textContent);
+        </script>
+    </body>
+    <script>
+        // Fill content from parent window
+        document.body.innerHTML = window.opener.message;
+    </script>
+</html>
