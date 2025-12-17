@@ -1,0 +1,4 @@
+# Ignore SQL Server Backup and Data files
+*.bak
+*.mdf
+*.ldf
