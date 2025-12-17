@@ -1,0 +1,342 @@
+/* ===================== The login page ===================== */
+
+.login-body {
+    font-family: 'Arial', sans-serif;
+    background-color: rgb(173, 212, 212);
+    /* background-color: darkslategray; */
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    height: 100vh;
+    position: relative;
+}
+
+.container{
+    display: flex;
+    width: 50%;
+    height: 50%;
+    border-radius: 40px;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2);
+    background-color:  #f0f2f5;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    color: black;
+    font-size: 18px;
+    font-weight: lighter;
+    text-align: center;
+    outline-color: white;
+    width: 70%;
+    height: 30px;
+    border-radius: 20px;
+    border-color: white;
+    background-color: rgb(173, 212, 212);
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+span{
+    width: 200px;
+    text-align: center;
+    color: rgb(231, 12, 12);
+    font-size: 18px;
+    align-self: center;
+    position: absolute;
+    left: calc(50% + 80px);
+    display: none;
+}
+
+#login-button{
+    color: white;
+    font-size: 18px;
+    background-color: rgb(96, 155, 155);
+    border-radius: 20px;
+    border-color: white;
+    margin: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#login-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+#signUp-link{
+    color: white;
+    font-size: 18px;
+    font-weight: lighter;
+    background-color: rgb(221, 174, 88);
+    border-radius: 20px;
+    border-color: white;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#signUp-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ===================== The Register page ===================== */
+#sign-header{
+    color: rgb(240, 168, 34);
+    /* border-color: black;
+    border-radius: 5px; */
+    /* color: rgb(96, 155, 155); */
+    font-size: 30px;
+}
+
+#register-button{
+    font-weight: lighter;
+    font-size: 18px;
+    /* background-color: rgb(96, 155, 155); */
+    border-radius: 20px;
+    border-color: rgb(96, 155, 155);
+    margin: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===================== The home page ===================== */
+.home-body {
+    font-family: 'Arial', sans-serif;
+    background-color: rgb(173, 212, 212);
+    /* background-color: darkslategray; */
+    margin: 0;
+    padding-left: 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+/* --- Header Style (New) --- */
+.store-header {
+    width: 100%;
+    padding: 10px 50px;
+    display: flex;
+    justify-content: flex-start; /* Aligns content to the left */
+    /* margin-bottom: 20px; */
+    margin: 10px;
+}
+
+.brand-name {
+    font-family: 'Dancing Script', cursive; /* A nice cursive/handwritten font */
+    font-size: 40px;
+    font-weight: lighter;
+    color: rgb(223, 136, 22) !important; /* Matches your theme color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-left: 30px;
+    padding: 5px 10px;
+}
+
+/* --- Edit the home page container --- */
+.home {
+    display: flex;
+    flex-direction: column; /* To make the items stack vertically */
+    align-items: center;    /* To center the items horizontally */
+    width: 100%;
+    padding: 5px 0;        /* Adds padding to the top and bottom */
+}
+
+/* --- Edit the slider container --- */
+.home-slider {
+    width: 60%;
+    height: 350px;        /* Fixed height! This prevents the huge size issue */
+    padding: 10px;
+    margin-bottom: 30px;  
+    border-radius: 15px;
+    overflow: hidden;     /* Prevent overflow of the image */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    background-color: #ffffffbf; 
+    display: flex;        /* Centers the image inside the box */
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- Edit the slider image --- */
+#slider {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensures the whole image is visible without cropping */
+    padding: 10px;       /* Adds a little breathing room for the image */
+}
+
+/* --- Edit the product cards (3x3 Grid) --- */
+.home-image {
+    height: 60%;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 20px;            /*  Distance between the cards */
+    width: 80%;
+    padding-bottom: 20px;
+}
+
+/* --- Edit the product card --- */
+.image {
+    background-color: #ffffffbf;
+    border-radius: 10px;
+    padding-top: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.3s ease; /* Animation for hover effect */
+    height: 250px; /* Fixed Hight */
+    cursor: pointer;
+    margin: 5px;
+    overflow: hidden;
+}
+
+.image:hover {
+    transform: translateY(-5px); /* Simple hover effect */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Edit the product image inside the card */
+.image img {
+    width: 110px;
+    height: 130px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+/* Edit product name */
+.image-name {
+    background-color: #1f202143;
+    /* background-color: rgb(173, 212, 212); */
+    width: 100%;
+    padding: 8px 5px;
+    border-radius: 0 0 10px 10px;
+    height: 30%;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    /* Dealing with name-text overflow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-line-clamp: 2; /* 2 lines only */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    position: static;
+}
+
+/* ===================== The Product page ===================== */
+.products-body {
+    font-family: 'Arial', sans-serif;
+    background-color: rgb(173, 212, 212);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.products-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    /* padding: 20px 0; */
+}
+
+/* Product header with back button and logo */
+.product-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /* padding: 10px 20px; */
+    position: relative;
+}
+
+.back-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+    color: rgb(223, 136, 22);
+    cursor: pointer;
+    padding: 5px 15px;
+    margin-left: 10px;
+    transition: transform 0.2s ease;
+}
+
+.back-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Product content layout */
+.product-content {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    gap: 40px;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Product image section */
+.product-image-section {
+    flex: 0 0 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    /* background-color: #f9f9f9; */
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.product-image-section img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Product information section */
+.product-info {
+    flex: 1;
+    padding: 20px 0;
+}
+
+.product-info h1 {
+    font-size: 28px;
+    color: #333;
+    margin: 0 0 15px 0;
+}
+
+.product-info p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.product-price {
+    font-size: 24px !important;
+    color: rgb(223, 136, 22) !important;
+    font-weight: bold !important;
+}
