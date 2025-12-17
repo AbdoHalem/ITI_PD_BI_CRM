@@ -96,7 +96,7 @@ if (userName && password){
  * @param {string} password - the password to register with
  */
 function Register(name, password){
-    let namePattern = /^[A-Za-z]+$/;
+    let namePattern = /^[a-zA-Z0-9._-]+$/;
     let passPattern = /^(?=.*[A-Z])(?=.*[._%+&#@-])[a-zA-Z0-9._%+&#@-]+$/;
     if(!namePattern.test(name)){
         nameError.style.display = "inline-block";
