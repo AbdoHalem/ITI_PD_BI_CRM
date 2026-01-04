@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <video src="./frozen.mp4" width="400" controls poster="frozen.jpg"></video>
+        <hr>
+        red: <input type="range" name="red" id="red" min="0" max="255" value="0">
+        green: <input type="range" name="green" id="green" min="0" max="255" value="0">
+        blue: <input type="range" name="blue" id="blue" min="0" max="255" value="0">
+        <h2 id="test_color">
+            Observe my color changes
+        </h2>
+    </main>
+</body>
+<script>
+    let red = document.getElementById("red");
+    let green = document.getElementById("green");
+    let blue = document.getElementById("blue");
+    let test_color = document.getElementById("test_color");
+
+    red.addEventListener("input",()=>{
+        test_color.style.color = `rgb(${red.value},${green.value},${blue.value})`;
+    })
+    green.addEventListener("input",()=>{
+        test_color.style.color = `rgb(${red.value},${green.value},${blue.value})`;
+    })
+    blue.addEventListener("input",()=>{
+        test_color.style.color = `rgb(${red.value},${green.value},${blue.value})`;
+    })
+</script>
+</html>
