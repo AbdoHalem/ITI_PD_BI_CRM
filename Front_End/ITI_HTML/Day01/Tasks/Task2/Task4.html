@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Line Animation</title>
+    </head>
+    <body>
+        <canvas id="can" width="600" height="600" style="border: 2px solid black;"></canvas>
+    </body>
+    <script>
+        let can = document.getElementById("can");
+        let ctx = can.getContext("2d");
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = "red";
+        let currentX = 0;
+        let currentY = 0;
+        const endX = can.width;
+        const endY = can.height;
+        function drawLine(){
+            const speed = 5;
+            currentX += speed;
+            currentY += speed;
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(currentX, currentY);
+            ctx.stroke();
+            if (currentX >= endX) {
+                cancelAnimationFrame(animationId);
+                setTimeout(() => {
+                    alert("animation end"); 
+                }, 10);
+            } else {
+                // Continue animation loop
+                animationId = requestAnimationFrame(drawLine);
+            }
+        }
+        // Start the animation
+        let animationId = requestAnimationFrame(drawLine);
+    </script>
+</html>

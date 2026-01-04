@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <canvas id="can" width="600" height="600" style="border: 2px solid black;"></canvas>
+    </body>
+    <script>
+        let can = document.getElementById("can");
+        let ctx = can.getContext("2d");
+        let inBottom = true;
+        let counter = 0, maxFlips = 10;
+        const x = 150, y = 200, radius = 50;
+        function drawHalfCircle(position) {
+            ctx.beginPath();
+            let counterClockwise = (position === 'top');
+            ctx.arc(x, y, radius, 0, Math.PI, counterClockwise);
+            ctx.fillStyle = "yellow";
+            ctx.fill();
+            ctx.strokeStyle = "black";
+            ctx.stroke();
+            ctx.closePath(); 
+        }
+        function animate() {
+            ctx.clearRect(0, 0, can.width, can.height);
+            if (counter >= maxFlips) {
+                drawHalfCircle('top');
+                drawHalfCircle('bottom');
+                clearInterval(timer);
+                return;
+            }
+
+            if (inBottom) {
+                drawHalfCircle('bottom');
+            } else {
+                drawHalfCircle('top');
+            }
+            inBottom = !inBottom;
+            counter++;
+        }
+        const timer = setInterval(animate, 500);
+    </script>
+</html>
