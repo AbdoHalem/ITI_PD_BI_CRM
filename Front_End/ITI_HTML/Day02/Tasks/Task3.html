@@ -1,0 +1,36 @@
+<!-- 3- implement two worker, "calc" for any calculation like submit
+, "fetch" for fetching API. -->
+<Doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Web Worker</title>
+    </head>
+    <body>
+        <h1>Web Worker</h1>
+        <button id="sumBtn">Sum</button>
+        <button id="fetchBtn">Fetch API</button>
+        
+    </body>
+    <script>
+        const sumBtn = document.getElementById('sumBtn');
+        const fetchBtn = document.getElementById('fetchBtn');
+
+        sumBtn.addEventListener('click', () => {
+            const calcWorker = new Worker('calc.js');
+            calcWorker.postMessage("");
+            calcWorker.onmessage = (e) => {
+                console.log("Sum result:", e.data);
+            };
+        });
+
+        fetchBtn.addEventListener('click', () => {
+            const fetchWorker = new Worker('fetch.js');
+            fetchWorker.postMessage({ url: 'https://jsonplaceholder.typicode.com/posts/1' });
+            fetchWorker.onmessage = (e) => {
+                console.log("Fetch result:", e.data);
+            };
+        });
+    </script>    
+</html>

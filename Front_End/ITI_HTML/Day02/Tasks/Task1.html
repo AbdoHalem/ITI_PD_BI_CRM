@@ -1,0 +1,40 @@
+<!-- 1- share live location (watchPosition / clearWatch) + map will open in the same tab -->
+<DocType html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GeoLocation API</title>
+  </head>
+  <body>
+    <h1>GeoLocation API</h1>
+    <button onclick="getLoc()">get location</button>
+    <button onclick="stopLoc()">Stop Sharing Location</button>
+    <script>
+        let options = {
+            // timeout:0,
+            // enableHighAccuracy:true,
+            // maximumAge:0 //ms
+        };
+        let watchID;
+        function getLoc() {
+            watchID = navigator.geolocation.watchPosition(showPos, showError, options);
+        }
+        function showPos(position) {
+            console.log(position);
+            let lat = position.coords.latitude;
+            let long = position.coords.longitude;
+            window.open(
+                `https://www.google.com/maps/@${lat},${long},15z`,
+                "_self"
+            );
+        }
+        function showError(err) {
+            console.log(err);
+        }
+        function stopLoc() {
+            navigator.geolocation.clearWatch(watchID);
+            console.log("stop sharing location");
+        }
+    </script>
+  </body>

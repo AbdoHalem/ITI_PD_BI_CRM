@@ -1,0 +1,5 @@
+1- share live location (watchPosition / clearWatch) + map will open in the same tab
+2- form " array of objects " + submit "table[display all users + delete specific user] + button back to form
+3- implement two worker, "calc" for any calculation like submit
+, "fetch" for fetching API.
+4- compare btn web worker and shared worker "word file with example"
