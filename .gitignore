@@ -5,4 +5,5 @@
 
 # Ignore Visual Studio Code files
 Problem\ Solving/LeetCode/.vscode
+Problem\ Solving/LeetCode/.vscode/launch.json
 .vscode
