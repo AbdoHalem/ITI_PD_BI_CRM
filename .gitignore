@@ -7,3 +7,6 @@
 Problem\ Solving/LeetCode/.vscode
 Problem\ Solving/LeetCode/.vscode/launch.json
 .vscode
+
+# Ignore temporary Claude Code files
+tmpclaude-*.cwd
