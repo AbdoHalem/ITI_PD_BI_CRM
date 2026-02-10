@@ -2,4 +2,7 @@
 *.bak
 *.mdf
 *.ldf
+
+# Ignore Visual Studio Code files
+Problem\ Solving/LeetCode/.vscode
 .vscode
