@@ -1,0 +1,46 @@
+﻿@model StudentVM
+@{
+    // Layout = null;
+	ViewBag.Title = "Create Student";
+    SelectList deptList = new SelectList(ViewBag.Depts, "DeptId", "DeptName");
+}
+
+@* <!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" /> 
+
+</head>
+<body> *@
+    <form method="post">
+		<label asp-for="Name">Student Name</label><input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name"></span><br />
+        <label asp-for="Age">Student Age</label><input asp-for="Age" class="form-control" />
+        <span asp-validation-for="Age"></span><br />
+        <label asp-for="Email">Student Email</label><input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email"></span><br />
+        <label asp-for="Password">Student Password</label><input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password"></span><br />
+        <label asp-for="CPassword">Confirm Password</label><input asp-for="CPassword" class="form-control" />
+        <span asp-validation-for="CPassword"></span><br />
+        <label asp-for="DeptNo">Student Department</label>
+        <select asp-for="DeptNo" asp-items="deptList" class="form-control" val>
+            <option>Select Department</option>
+        </select>
+        <span asp-validation-for="DeptNo"></span><br />
+		<input type="submit" value="Create" class="btn btn-primary" />
+    </form>
+    @* Scripts must be in this order because they depends on each other in this order*@
+ @*    <script src="~/lib/jquery/dist/jquery.js"></script>
+	<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script> *@
+
+    @section Scripts{
+	<partial name="_ValidationScriptsPartial" />
+    }
+@* </body>
+</html> *@

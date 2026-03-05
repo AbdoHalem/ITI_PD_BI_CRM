@@ -1,0 +1,14 @@
+﻿@model Department
+@{
+    // Layout = null;
+	ViewBag.Title = "Create Department";
+}
+
+    @* <form asp-controller="department" asp-action="add" method="post"> *@
+    <form method="post">
+        <label>Dept Id</label><input asp-for="DeptId" /><br/>
+        <label>Dept Name</label><input asp-for="DeptName" /><br />
+        <label>Capacity</label><input type="text" name="Capacity" /><br />
+        <input type="submit" value="Create" class="btn btn-primary" /><br />
+        @* value attribute is for the button name *@
+    </form>

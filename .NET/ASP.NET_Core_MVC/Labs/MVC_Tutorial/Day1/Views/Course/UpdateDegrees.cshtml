@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Department>
+@{
+    // Layout = null;
+	ViewBag.Title = "Update Students Degrees";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UpdateDegrees</title>
+</head>
+<body>
+    <h1>Update Department-Course Degrees</h1>
+    <form method="post">
+        <label>Department to Update</label>
+        <select name="selectedDeptId" multiple>
+            @foreach (var dept in @Model)
+            {
+                <option value="@dept.DeptId">@dept.DeptName</option>
+            }
+        </select><br />
+        <input type="submit" value="Update" class="btn btn-danger" />
+    </form>
+
+</body>
+</html>

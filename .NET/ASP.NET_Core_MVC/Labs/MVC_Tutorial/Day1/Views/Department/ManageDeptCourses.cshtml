@@ -1,0 +1,24 @@
+﻿@model Department
+@{
+    // Layout = null;
+	ViewBag.Title = "Manage Department Courses";
+}
+
+    <h1>Update Department @Model.DeptName Courses</h1>
+    <form method="post">
+        <label>Courses to Remove</label>
+        <select name="coursesToRemove" multiple>
+            @foreach(var course in Model.Courses)
+            {
+				<option value="@course.CrsId">@course.Name</option>
+			}
+        </select><br />
+        <label>Courses to Add</label>
+        <select name="coursesToAdd" multiple>
+            @foreach (var course in ViewBag.coursesNotInDept)
+            {
+                <option value="@course.CrsId">@course.Name</option>
+            }
+        </select><br />
+		<input type="submit" value="Update" class="btn btn-danger" />
+    </form>

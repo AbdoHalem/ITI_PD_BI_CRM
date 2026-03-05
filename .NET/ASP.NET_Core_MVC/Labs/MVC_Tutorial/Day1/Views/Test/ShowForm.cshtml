@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShowForm</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    @* <form method="get" action="/Test/Add"> *@
+    <form method="post">
+		<label>x</label><input type="text" name="x"/><br/>
+		<label>y</label><input type="text" name="y" /><br />
+		<input type="submit" value="sum" formaction="/test/add" class="btn btn-danger"/>
+		<input type="submit" value="sub" formaction="/test/subtract" class="btn btn-success"/>
+	</form>
+</body>
+</html>

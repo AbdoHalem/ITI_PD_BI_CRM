@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Student>
+@{
+    // Layout = null;
+    ViewBag.Title = "Set Degrees";
+}
+
+    <form method="post">
+        <input type="hidden" name="CrsId" value="@ViewBag.CrsId" />
+        @foreach(var student in Model)
+        {
+            var degree = ViewBag.Degrees.ContainsKey(student.Id) ? ViewBag.Degrees[student.Id] : "";
+            <label>@student.Name</label>
+            <input type="text" name="degrees[@student.Id]" value="@degree" /><br />
+        }
+        <br />
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+

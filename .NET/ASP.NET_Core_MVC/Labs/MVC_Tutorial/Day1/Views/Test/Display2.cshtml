@@ -1,0 +1,34 @@
+﻿@* @model Student *@
+@model Display2ViewModel
+@{
+    Layout = null;
+    int x = 10;
+    List<string> names = ["Aly", "Mohamed", "Sara"];
+	Student s1 = new Student() { Id = 1, Name = "Aly", Age = 20 };
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Display2</title>
+</head>
+<body>
+    <h1>@Model</h1>
+    <h1>@Model.Student.Id @Model.X</h1>
+    <h1>@ViewData["x"]</h1>
+    <h1>@((int)ViewData["x"] + 1)</h1>
+    @* <h1>@s1.ToString()</h1> *@
+    <h1>@ViewData["student"]</h1>
+    <h1>z = @(ViewBag.z + 1)</h1>
+    <h1>x = @x</h1>
+    <ul>
+        @foreach(var name in names)
+        {
+            <li>@name</li>
+		}
+    </ul>
+	<h1>Hello MVC World</h1>
+</body>
+</html>

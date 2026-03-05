@@ -1,0 +1,15 @@
+﻿@model Department
+@{
+    // Layout = null;
+	ViewBag.Title = "Show Department Courses";
+}
+
+    <h1 class="alert alert-info">
+		Courses of @Model.DeptName Department
+    </h1>
+    <ul>
+        @foreach(var course in Model.Courses)
+        {
+            <li>@course.Name</li>
+		}
+    </ul>

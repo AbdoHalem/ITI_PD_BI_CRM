@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Student> // We Used IEnumerable because we want to display a list of students without editing them, if we want to edit them we will use Student
+@{
+    // Layout = null;
+    ViewBag.Title = "Students List";
+}
+
+@* <!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
+</head>
+<body> *@
+    <a asp-action="Create" class="btn btn-primary">Create</a>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Student Id</th>
+                <th>Student Name</th>
+                <th>Age</th>
+                <th>Department Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Age</td>
+                    <td>@item.Department?.DeptName</td>
+                </tr>
+            }
+		</tbody>
+    </table>
+@* </body>
+</html> *@
