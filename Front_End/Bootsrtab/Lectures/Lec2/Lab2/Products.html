@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products List</title>
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.css" />
+    <style>
+        /* Custom background color to match the lab image */
+        .custom-card-bg {
+            background-color: #f0f4f8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <h2 class="text-center text-primary mb-5 fw-bold">Our Products</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4" id="products-container">
+            </div>
+    </div>
+
+    <script>
+        // Declare an array of objects for products
+        const products = [
+            {img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=799&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", name: "Product 1", stock: 25, price: 10000},
+            {img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=799&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", name: "Product 2", stock: 40, price: 30000},
+            {img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=799&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", name: "Product 3", stock: 20, price: 20000},
+            {img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=799&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", name: "Product 4", stock: 25, price: 10000},
+            {img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=799&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", name: "Product 5", stock: 40, price: 30000},
+            {img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=799&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", name: "Product 6", stock: 20, price: 20000},
+            {img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=799&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", name: "Product 7", stock: 20, price: 20000},
+            {img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=799&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", name: "Product 8", stock: 20, price: 20000}
+        ];
+
+        // Select the container where cards will be placed
+        const container = document.getElementById('products-container');
+
+        // Loop through the array and generate horizontal cards
+        products.forEach(product => {
+            const cardHTML = `
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm custom-card-bg rounded-4 overflow-hidden">
+                        <div class="row g-0 h-100 align-items-center">
+                            <div class="col-5 h-100">
+                                <img src="${product.img}" class="img-fluid rounded-start h-100 object-fit-cover" alt="${product.name}">
+                            </div>
+                            <div class="col-7">
+                                <div class="card-body py-2">
+                                    <h5 class="card-title text-dark">${product.name}</h5>
+                                    <p class="card-text text-success fw-bold mb-1">Price: $${product.price}</p>
+                                    <p class="card-text text-secondary small mb-0">Stock: ${product.stock}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            // Append the generated HTML to the container
+            container.innerHTML += cardHTML;
+        });
+    </script>
+</body>
+</html>

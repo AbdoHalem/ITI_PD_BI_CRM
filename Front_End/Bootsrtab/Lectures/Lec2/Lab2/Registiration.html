@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.css" />
+</head>
+<body class="bg-light">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-primary text-white text-center py-3">
+                        <h4 class="mb-0">Registration Form</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <form id="regForm" class="needs-validation" novalidate>
+                            
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" required>
+                                <div class="invalid-feedback">
+                                    Please enter a valid username.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" required>
+                                <div class="valid-feedback">
+                                    Email format is valid.
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please provide a valid email format (e.g., user@example.com).
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" required minlength="6">
+                                <div class="invalid-feedback">
+                                    Password must be at least 6 characters long.
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary w-100 py-2" type="submit">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fetch the form element from the DOM
+        const form = document.getElementById('regForm');
+
+        // Add an event listener for the form submission
+        form.addEventListener('submit', function (event) {
+            
+            // Check if the form passes HTML5 validation rules
+            if (!form.checkValidity()) {
+                // Prevent the form from submitting
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            // Add the Bootstrap was-validated class to show green/red borders
+            form.classList.add('was-validated');
+            
+        }, false);
+    </script>
+</body>
+</html>
