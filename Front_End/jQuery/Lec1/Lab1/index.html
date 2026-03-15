@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Day 1 - Task</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script> -->
+    <script src="jquery-4.0.0.js"></script>
+</head>
+<body>
+    <div class="nav-bar">
+        <button id="btn-about" class="nav-btn">About</button>
+        <button id="btn-gallery" class="nav-btn">Gallery</button>
+        
+        <div class="services-wrapper">
+            <button id="btn-services" class="nav-btn">Services</button>
+            <div id="services-menu" class="dropdown-content section">
+                <div class="service-item">Item #1</div>
+                <div class="service-item">Item #2</div>
+                <div class="service-item">Item #3</div>
+            </div>
+        </div>
+
+        <button id="btn-complain" class="nav-btn">Complain</button>
+    </div>
+
+    <div id="content-area">
+        <div id="about-sec" class="content-box section">
+            <h3>Story About snow man</h3>
+        </div>
+
+        <div id="gallery-sec" class="section">
+            <div class="slider">
+                <button id="prev-btn" class="arrow-btn"><</button>
+                <img id="slider-img" src="snow1.jpg" alt="Snowman" width="400" height="250">
+                <button id="next-btn" class="arrow-btn">></button>
+            </div>
+        </div>
+
+        <div id="complain-sec" class="content-box section">           
+            <div id="form-view">
+                <div><label>Name: </label><input type="text" id="input-name"></div>
+                <div><label>Email: </label><input type="text" id="input-email"></div>
+                <div><label>Phone: </label><input type="text" id="input-phone"></div>
+                <div>
+                    <label>Complain: </label><br>
+                    <textarea id="input-complain" rows="4" cols="30"></textarea>
+                </div>
+                <button id="send-btn">send</button>
+            </div>
+
+            <div id="result-view" style="display: none;">
+                <p>Your complain is <span id="res-complain" class="bold-text"></span></p>
+                <p>Your name is <span id="res-name" class="bold-text"></span></p>
+                <p>Your email is <span id="res-email" class="bold-text"></span></p>
+                <p>Your phone is <span id="res-phone" class="bold-text"></span></p>
+                <button id="back-btn">Back to edit</button>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
