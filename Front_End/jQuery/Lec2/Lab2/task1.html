@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 1: Moving Car</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <style>
+        /* Container must be relative so the absolute car can move inside it */
+        #container {
+            position: relative;
+            height: 200px;
+        }
+        #car {
+            position: absolute;
+            left: 0px;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img id="car" src="car.gif" alt="Moving Car">
+    </div>
+    
+    <p id="car-info">&lt;img src="car.gif" style="left: 0px"/&gt;</p>
+
+    <script>
+        $(document).ready(function() {
+            // Animate the car's left position to 345px
+            $('#car').animate({
+                left: '345px'
+            }, {
+                duration: 3000, // Animation takes 3 seconds
+                // The step function runs on every frame of the animation
+                step: function(now) {
+                    // Update the text with the current integer value of 'left'
+                    var currentLeft = Math.round(now);
+                    $('#car-info').text('<img src="car.gif" style="left: ' + currentLeft + 'px"/>');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

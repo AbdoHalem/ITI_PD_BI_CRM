@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 3: Rotate & Scale</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+            padding-top: 50px;
+        }
+        #box {
+            width: 150px;
+            margin: 50px auto;
+            display: block;
+            /* Added smooth transition for a better visual effect */
+            transition: transform 0.1s; 
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btn-scale">Scale!</button>
+    <button id="btn-rotate">Rotate!</button>
+    <br>
+    <img src="1.jpg" id="box" alt="Image to animate">
+
+    <script>
+        $(document).ready(function() {
+            // Global variables to store the current state of the image
+            var currentDeg = 0;
+            var currentScale = 1;
+
+            // Rotate Button Logic
+            $('#btn-rotate').click(function() {
+                // Increase the rotation by 360 degrees each time it's clicked
+                var newDeg = currentDeg + 30;
+
+                $({ deg: currentDeg }).animate({ deg: newDeg }, {
+                    duration: 1000,
+                    step: function(now) {
+                        // Apply rotation along with the existing scale
+                        $('#box').css({
+                            transform: 'rotate(' + now + 'deg) scale(' + currentScale + ')'
+                        });
+                    },
+                    complete: function() {
+                        // Update the current state when animation is done
+                        currentDeg = newDeg;
+                    }
+                });
+            });
+
+            // Scale Button Logic
+            $('#btn-scale').click(function() {
+                // Toggle the scale value between 1 and 2
+                var newScale = (currentScale === 1) ? 2 : 1;
+
+                $({ scale: currentScale }).animate({ scale: newScale }, {
+                    duration: 1000,
+                    step: function(now) {
+                        // Apply scale along with the existing rotation
+                        $('#box').css({
+                            transform: 'rotate(' + currentDeg + 'deg) scale(' + now + ')'
+                        });
+                    },
+                    complete: function() {
+                        // Update the current state when animation is done
+                        currentScale = newScale;
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
