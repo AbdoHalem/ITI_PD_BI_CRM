@@ -1,3 +1,4 @@
+//& ==================== Task 1 ====================
 //? Task a
 // Declaring variables with specific types
 let employeeName: string = "Abdo";
@@ -61,3 +62,45 @@ let myRole: UserRole = UserRole.Student;
 if (myRole === UserRole.Student) {
     console.log("Welcome to the ITI Lab!");
 }
+
+//& ==================== Task 2 ====================
+class Point2D{
+    // Properties for x and y coordinates
+    x: number;
+    y: number;
+    // Constructor to initialize the coordinates
+    constructor(x: number, y: number){
+        this.x = x;
+        this.y = y;
+    }
+    // Method to calculate the distance between current point and another Point2D
+    calculateLength(otherPoint: Point2D): number{
+        let deltaX = this.x - otherPoint.x;
+        let deltaY = this.y - otherPoint.y;
+        return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    }
+}
+ let p1: Point2D = new Point2D(0, 0);
+ let p2: Point2D = new Point2D(3, 4);
+ console.log(`Distance between p1 and p2: ${p1.calculateLength(p2)}`);
+
+//& ==================== Task 3 ====================
+class Point3D extends Point2D{
+    z: number;
+
+    constructor(x: number, y: number, z: number){
+        super(x, y);    //* Call parent constructor
+        this.z = z;
+    }
+    // Overloading or creating a new method to calculate length with 3 points
+    calculateLength(otherPoint: Point3D): number {
+        let deltaX = this.x - otherPoint.x;
+        let deltaY = this.y - otherPoint.y;
+        let deltaZ = this.z - otherPoint.z;
+        return Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2) + Math.pow(deltaZ, 2));
+    }
+}
+
+let p3: Point3D = new Point3D(0, 0, 0);
+let p4: Point3D = new Point3D(3, 4, 5);
+console.log(`Distance between p3 and p4: ${p3.calculateLength(p4)}`);
