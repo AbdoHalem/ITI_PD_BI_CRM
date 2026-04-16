@@ -18,7 +18,8 @@ namespace Lab2.MappingProfiles
             
             // Create mapping between Student and EditStudentDTO
             CreateMap<Student, EditStudentDTO>()
-                .ForMember(dest => dest.Supervisor_Id, opt => opt.MapFrom(src => src.St_super));
+                .ForMember(dest => dest.Supervisor_Id, opt => opt.MapFrom(src => src.St_super))
+				.ReverseMap();
 
             // Create mapping between Department and DisplayDepartmemtDTO
             CreateMap<Department, DisplayDepartmemtDTO>()
@@ -26,7 +27,7 @@ namespace Lab2.MappingProfiles
                 .ForMember(dest => dest.Students_Count, opt => opt.MapFrom(src => src.Students.Count));
 
             // Create mapping between Department and EditDepartmentDTO
-            CreateMap<Department, EditDepartmentDTO>();
+            CreateMap<Department, EditDepartmentDTO>().ReverseMap();
         }
     }
 }
