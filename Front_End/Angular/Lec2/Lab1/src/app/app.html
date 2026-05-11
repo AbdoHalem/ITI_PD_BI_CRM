@@ -1,0 +1,69 @@
+<mat-toolbar color="primary">
+  <mat-icon style="margin-right: 10px;">school</mat-icon>
+  <span>ITI Student Management</span>
+</mat-toolbar>
+
+<div style="padding: 20px;">
+
+  <ngb-alert *ngIf="showAlert" type="success" (closed)="showAlert = false">
+    {{ alertMessage }}
+  </ngb-alert>
+
+  <div style="margin-bottom: 15px;">
+    <p-button label="Add New Student" icon="pi pi-plus" (click)="openAddDialog()"></p-button>
+  </div>
+
+  <p-table [value]="students" [tableStyle]="{'min-width': '50rem'}">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-student>
+      <tr [ngStyle]="{'background-color': student.age > 30 ? '#ffcccc' : 'transparent'}">
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.age }}</td>
+        <td>
+          <p-button icon="pi pi-pencil"
+            styleClass="p-button-rounded p-button-success p-button-text"
+            (click)="openEditDialog(student)"
+            ngbTooltip="Edit">
+          </p-button>
+
+          <p-button icon="pi pi-trash"
+            styleClass="p-button-rounded p-button-danger p-button-text"
+            (click)="deleteStudent(student.id)"
+            ngbTooltip="Delete">
+          </p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</div>
+
+<p-dialog header="{{ isEditMode ? 'Edit Student' : 'Add Student' }}" [(visible)]="displayDialog" [modal]="true" [style]="{width: '30vw'}">
+
+  <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
+    <div class="p-field">
+      <label for="name" style="display: block; margin-bottom: 5px;">Name</label>
+      <input id="name" type="text" pInputText [(ngModel)]="studentForm.name" style="width: 100%;">
+    </div>
+
+    <div class="p-field">
+      <label for="age" style="display: block; margin-bottom: 5px;">Age</label>
+      <p-inputNumber inputId="age" [(ngModel)]="studentForm.age" styleClass="w-full" [style]="{'width': '100%'}"></p-inputNumber>
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <p-button icon="pi pi-times" (click)="displayDialog = false" label="Cancel" styleClass="p-button-text"></p-button>
+    <p-button icon="pi pi-check" (click)="saveStudent()" label="Save"></p-button>
+  </ng-template>
+
+</p-dialog>
