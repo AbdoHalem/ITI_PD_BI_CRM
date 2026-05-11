@@ -1,0 +1,27 @@
+<div class="container">
+  <app-add-student (onAdd)="addStudent($event)"></app-add-student>
+
+  <p-table [value]="students()">
+    <ng-template pTemplate="body" let-s>
+      <tr>
+        <td>{{ s.name }}</td>
+        <td>
+          <app-delete-student [studentId]="s.id" (onConfirm)="removeStudent($event)"></app-delete-student>
+          
+          <p-button icon="pi pi-eye" [text]="true" (onClick)="showDetails(s)"></p-button>
+          <p-button icon="pi pi-pencil" [text]="true" (onClick)="startEdit(s)"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <app-details-student [student]="selectedStudent()" #detailsChild></app-details-student>
+</div>
+
+<div class="container">
+  <app-edit-student 
+    [student]="selectedStudent()" 
+    (onUpdate)="updateStudent($event)" 
+    #editChild>
+  </app-edit-student>
+</div>

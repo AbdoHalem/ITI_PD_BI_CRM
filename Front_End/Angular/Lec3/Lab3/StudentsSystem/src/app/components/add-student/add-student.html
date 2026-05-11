@@ -1,0 +1,11 @@
+<p-button label="Add New Student" icon="pi pi-plus" (onClick)="visible.set(true)"></p-button>
+
+<p-dialog header="Add New Student" [visible]="visible()" (visibleChange)="visible.set($event)" [modal]="true">
+    <div class="flex flex-column gap-3">
+    <input pInputText [(ngModel)]="newStudent.name" placeholder="Name" />
+    <input pInputText [(ngModel)]="newStudent.age" type="number" placeholder="Age" />
+    </div>
+    <ng-template pTemplate="footer">
+    <p-button label="Save" (onClick)="save()"></p-button>
+    </ng-template>
+</p-dialog>

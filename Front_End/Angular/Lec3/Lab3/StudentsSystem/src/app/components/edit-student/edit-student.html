@@ -1,0 +1,17 @@
+<p-dialog header="Edit Student Info" [visible]="visible()" (visibleChange)="visible.set($event)" [modal]="true">
+    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+        <div class="field">
+            <label style="display: block;">Name</label>
+            <input pInputText [ngModel]="editForm().name" (ngModelChange)="editForm.set({...editForm(), name: $event})" style="width: 100%" />
+        </div>
+        <div class="field">
+            <label style="display: block;">Age</label>
+            <input pInputText type="number" [ngModel]="editForm().age" (ngModelChange)="editForm.set({...editForm(), age: $event})" style="width: 100%" />
+        </div>
+    </div>
+    
+    <ng-template pTemplate="footer">
+        <p-button label="Cancel" [text]="true" (onClick)="visible.set(false)"></p-button>
+        <p-button label="Update Student" (onClick)="update()"></p-button>
+    </ng-template>
+</p-dialog>

@@ -1,0 +1,7 @@
+<p-dialog header="Student Details" [visible]="visible()" (visibleChange)="visible.set($event)">
+    @if (student()) {
+    <p><strong>ID:</strong> {{ student()?.id }}</p>
+    <p><strong>Name:</strong> {{ student()?.name }}</p>
+    <p><strong>Age:</strong> {{ student()?.age }}</p>
+    }
+</p-dialog>
