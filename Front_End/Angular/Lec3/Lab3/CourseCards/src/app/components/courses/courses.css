@@ -1,0 +1,11 @@
+/* Custom class applied using [ngClass] when course is full */
+.full-course-text {
+    color: #dc2626 !important; /* Red text */
+}
+
+/* Force PrimeNG text colors to be red when the card has this class */
+.full-course-text p, 
+.full-course-text .p-card-title, 
+.full-course-text .p-card-subtitle {
+    color: #dc2626 !important;
+}

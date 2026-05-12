@@ -1,0 +1,18 @@
+<div class="row align-items-center mb-4 p-3 bg-light rounded shadow-sm">
+    <div class="col-md-6">
+        <label for="category" class="form-label fw-bold">Filter by Category:</label>
+        <select id="category" class="form-select" (change)="onSelectCategory($event)">
+            <option value="All">All Categories</option>
+            @for (cat of categories(); track cat) {
+                <option [value]="cat">{{cat}}</option>
+            }
+        </select>
+    </div>
+
+    <div class="col-md-6 text-end">
+        <h4 class="m-0">
+            Total Price: <span class="badge bg-success">{{totalPrice() | currency}}</span>
+        </h4>
+    </div>
+
+</div>
