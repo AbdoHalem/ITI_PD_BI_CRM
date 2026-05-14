@@ -1,0 +1,22 @@
+<div class="container" style="padding: 20px; display: flex; justify-content: center; margin-top: 50px;">
+  
+  @if (studentInfo) {
+    <p-card header="Student Information" [style]="{ width: '400px' }" class="shadow-sm">
+      <div style="font-size: 1.1rem; line-height: 1.8;">
+        <p><strong>Student ID:</strong> {{ studentInfo.id }}</p>
+        <p><strong>Full Name:</strong> {{ studentInfo.name }}</p>
+        <p><strong>Age:</strong> {{ studentInfo.age }} Years Old</p>
+      </div>
+
+      <ng-template pTemplate="footer">
+        <p-button label="Back to List" icon="pi pi-arrow-left" [text]="true" (onClick)="GoBack()"></p-button>
+      </ng-template>
+    </p-card>
+  } @else {
+    <div style="text-align: center;">
+      <h3 style="color: #dc2626;">Student Not Found!</h3>
+      <p-button label="Go Back" icon="pi pi-arrow-left" (onClick)="GoBack()"></p-button>
+    </div>
+  }
+
+</div>

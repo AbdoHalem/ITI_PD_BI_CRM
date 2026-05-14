@@ -1,0 +1,25 @@
+<div class="container" style="padding: 20px; display: flex; justify-content: center; margin-top: 50px;">
+  
+  @if (studentToDelete) {
+    <p-card header="Confirm Deletion" [style]="{ width: '450px' }" class="shadow-sm">
+      <p style="font-size: 1.1rem; line-height: 1.6;">
+        Are you sure you want to permanently delete <strong>{{ studentToDelete.name }}</strong>?
+        <br>
+        <span style="color: #666; font-size: 0.9rem;">This action cannot be undone.</span>
+      </p>
+
+      <ng-template pTemplate="footer">
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+          <p-button label="Cancel" icon="pi pi-times" severity="secondary" [text]="true" (onClick)="CancelDelete()"></p-button>
+          <p-button label="Yes, Delete" icon="pi pi-trash" severity="danger" (onClick)="ConfirmDelete()"></p-button>
+        </div>
+      </ng-template>
+    </p-card>
+  } @else {
+    <div style="text-align: center;">
+      <h3 style="color: #dc2626;">Student Not Found!</h3>
+      <p-button label="Go Back" icon="pi pi-arrow-left" (onClick)="CancelDelete()"></p-button>
+    </div>
+  }
+
+</div>
