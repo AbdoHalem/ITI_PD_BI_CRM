@@ -1,0 +1,65 @@
+﻿@using Lab1.Models
+@using Lab1.Services
+
+@page "/catalog"
+
+@* Injecting the services using Dependency Injection (DIP) *@
+@inject IProductService ProductService
+@inject ICategoryService CategoryService
+@inject NavigationManager NavManager
+
+<div class="container mt-4">
+    <h2 class="mb-4">Product Catalog</h2>
+
+    <div class="mb-4">
+        <label class="form-label"><b>Select Category:</b></label>
+        @* Event Binding: Triggers FilterProducts method when selection changes *@
+        <select class="form-select" @onchange="FilterProducts">
+            <option value="0">All Categories</option>
+            @foreach (var category in catAll)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="row">
+        @if (ProductResult != null && ProductResult.Any())
+        {
+            @foreach (var product in ProductResult)
+            {
+                <div class="col-md-3 mb-3">
+                    <div class="card shadow-sm h-100">
+                        @* One-way binding for image source and alt text *@
+                        <img src="/images/@product.Image" class="card-img-top" alt="@product.Name" style="height: 150px; object-fit: contain; padding: 10px;">
+                        
+                        <div class="card-body text-center d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title">@product.Name</h5>
+                                <p class="card-text text-success fw-bold">@product.Price EGP</p>
+                            </div>
+                            
+                            <div class="d-flex justify-content-center gap-2 mt-3">
+                                @* Existing Details Button *@
+                                <button class="btn btn-primary btn-sm" @onclick="() => NavigateToDetails(product.Id)">
+                                    View Details
+                                </button>
+    
+                                @* New Edit Button *@
+                                <button class="btn btn-warning btn-sm" @onclick="() => NavigateToEdit(product.Id)">
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="alert alert-info">No products available.</div>
+            </div>
+        }
+    </div>
+</div>

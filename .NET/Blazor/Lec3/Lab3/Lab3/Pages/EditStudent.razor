@@ -1,0 +1,76 @@
+﻿@using Lab3.Models
+@using Lab3.Services
+
+@page "/edit-student/{Id:int}"
+
+@inject IStudentService StudentService
+@inject IDepartmentService DepartmentService
+@inject NavigationManager NavManager
+
+<div class="container mt-4">
+    <h2>Edit Student</h2>
+    <hr />
+
+    @if (isLoaded)
+    {
+        <div class="row">
+            <div class="col-md-8">
+                @* Built-in Blazor form component.
+                   OnValidSubmit only fires if DataAnnotations rules pass *@
+                <EditForm Model="studentToEdit" OnValidSubmit="HandleValidSubmit">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary class="text-danger mb-3" />
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">First Name</label>
+                            @* Two-way binding to string *@
+                            <InputText @bind-Value="studentToEdit.St_Fname" class="form-control" />
+                            <ValidationMessage For="@(() => studentToEdit.St_Fname)" class="text-danger" />
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Last Name</label>
+                            <InputText @bind-Value="studentToEdit.St_Lname" class="form-control" />
+                            <ValidationMessage For="@(() => studentToEdit.St_Lname)" class="text-danger" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Age</label>
+                        @* Two-way binding to int *@
+                        <InputNumber @bind-Value="studentToEdit.St_Age" class="form-control" />
+                        <ValidationMessage For="@(() => studentToEdit.St_Age)" class="text-danger" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Address</label>
+                        <InputText @bind-Value="studentToEdit.St_Address" class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Department</label>
+                        @* Two-way binding for the select dropdown mapping to Dept_Id *@
+                        <InputSelect @bind-Value="studentToEdit.Dept_Id" class="form-select">
+                            <option value="0">-- Select Department --</option>
+                            @foreach (var dept in departments)
+                            {
+                                <option value="@dept.Dept_Id">@dept.Dept_Name</option>
+                            }
+                        </InputSelect>
+                        <ValidationMessage For="@(() => studentToEdit.Dept_Id)" class="text-danger" />
+                    </div>
+
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-success">Save Changes</button>
+                        <button type="button" class="btn btn-secondary ms-2" @onclick="CancelEdit">Cancel</button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">Loading student data...</div>
+    }
+</div>

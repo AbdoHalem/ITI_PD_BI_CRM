@@ -1,0 +1,50 @@
+﻿@using Lab1.Models
+@using Lab1.Services
+
+@* Route configuration with an integer parameter *@
+@page "/product/{Id:int}"
+
+@inject IProductService ProductService
+@inject NavigationManager NavManager
+
+<div class="container mt-4">
+    @if (currentProduct != null)
+    {
+        <div class="card shadow mx-auto" style="max-width: 600px;">
+            <div class="row g-0">
+                <div class="col-md-5 bg-light d-flex align-items-center justify-content-center p-3">
+                    @* One-way binding for the product image *@
+                    <img src="/images/@currentProduct.Image" class="img-fluid rounded-start" alt="@currentProduct.Name" style="max-height: 250px; object-fit: contain;">
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        @* One-way binding for textual product details *@
+                        <h3 class="card-title mb-3">@currentProduct.Name</h3>
+                        <h4 class="text-success mb-4">Price: @currentProduct.Price EGP</h4>
+                        
+                        <p class="text-muted">
+                            Product ID: <span class="badge bg-secondary">@currentProduct.Id</span>
+                        </p>
+                        <p class="text-muted">
+                            Category ID: <span class="badge bg-info text-dark">@currentProduct.CatID</span>
+                        </p>
+
+                        <div class="d-flex gap-2 mt-4">
+                            @* Navigation button to go back *@
+                            <button class="btn btn-outline-secondary" @onclick="BackToCatalog">
+                                Back to Catalog
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger text-center">
+            <h4>Product not found!</h4>
+            <button class="btn btn-primary mt-2" @onclick="BackToCatalog">Back to Catalog</button>
+        </div>
+    }
+</div>

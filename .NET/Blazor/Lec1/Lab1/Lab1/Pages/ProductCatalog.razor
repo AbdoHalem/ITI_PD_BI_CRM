@@ -1,0 +1,91 @@
+﻿@using Lab1.Models
+
+@page "/catalog"
+<div class="container mt-4">
+    <h2 class="mb-4">Product Catalog</h2>
+
+    <div class="mb-4">
+        <label class="form-label"><b>Select Category:</b></label>
+        
+        <select class="form-select" @onchange="FilterProducts">
+            <option value="0">All Categories</option>
+            
+            @foreach (var category in catAll)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="row">
+        @foreach (var product in ProductResult)
+        {
+            <div class="col-md-3 mb-3">
+                <div class="card shadow-sm">
+                    <img src="/images/@product.Image" class="card-img-top" alt="@product.Name" style="height: 150px; object-fit: contain; padding: 10px;">
+                    
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text text-success fw-bold">@product.Price EGP</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+@code {
+    // 1. Declare the state variables
+    private List<Category> catAll = new();
+    private List<Product> allProduct = new();
+    private List<Product> ProductResult = new();
+    
+    // Store the currently selected Category ID
+    private int CatID = 0;
+
+    // 2. Initialize data when the component loads
+    protected override void OnInitialized()
+    {
+        // Seed dummy categories
+        catAll = new List<Category>
+        {
+            new Category { Id = 1, Name = "Electronics" },
+            new Category { Id = 2, Name = "Fashion" }
+        };
+
+        // Seed dummy products
+        allProduct = new List<Product>
+        {
+            new Product { Id = 1, Name = "Laptop", Price = 15000, CatID = 1, Image = "laptop.jpg" },
+            new Product { Id = 2, Name = "Mobile", Price = 8000, CatID = 1, Image = "mobile.jpg" },
+            new Product { Id = 3, Name = "T-Shirt", Price = 250, CatID = 2, Image = "t-shirt.jpg" },
+            new Product { Id = 4, Name = "Jeans", Price = 400, CatID = 2, Image = "jeans.jpg" }
+        };
+
+        // Initially, show all products
+        ProductResult = allProduct.ToList();
+    }
+
+    // 3. Handle the dropdown selection change
+    private void FilterProducts(ChangeEventArgs e)
+    {
+        // Get the selected value from the dropdown and convert it to integer
+        if (int.TryParse(e.Value?.ToString(), out int selectedId))
+        {
+            CatID = selectedId;
+
+            // If the user selects "All Categories" (value 0)
+            if (CatID == 0)
+            {
+                ProductResult = allProduct.ToList();
+            }
+            else
+            {
+                // Filter the allProduct list based on the selected CatID
+                ProductResult = allProduct.Where(p => p.CatID == CatID).ToList();
+            }
+        }
+    }
+}

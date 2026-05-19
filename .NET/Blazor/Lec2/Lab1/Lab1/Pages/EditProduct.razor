@@ -1,0 +1,82 @@
+﻿@using Lab1.Models
+@using Lab1.Services
+
+@* Route with the product ID parameter *@
+@page "/edit-product/{Id:int}"
+
+@* Inject necessary services *@
+@inject IProductService ProductService
+@inject ICategoryService CategoryService
+@inject NavigationManager NavManager
+
+<div class="container mt-4">
+    <h2>Edit Product</h2>
+    <hr />
+
+    @if (productToEdit != null)
+    {
+        @* EditForm binds to our model.
+            OnValidSubmit is triggered ONLY if all DataAnnotations rules pass.
+        *@
+        <div class="row">
+            <div class="col-md-6">
+                <EditForm Model="productToEdit" OnValidSubmit="SaveChanges">
+                    @* Enables checking the rules defined in the Product model *@
+                    <DataAnnotationsValidator />
+                    
+                    @* Shows a summary of all validation errors at the top (optional but helpful) *@
+                    <ValidationSummary class="text-danger" />
+
+                    <div class="mb-3">
+                        <label class="form-label">Product Name</label>
+                        @* Two-way binding for string *@
+                        <InputText @bind-Value="productToEdit.Name" class="form-control" />
+                        <ValidationMessage For="@(() => productToEdit.Name)" class="text-danger" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Price (EGP)</label>
+                        @* Two-way binding for numbers *@
+                        <InputNumber @bind-Value="productToEdit.Price" class="form-control" />
+                        <ValidationMessage For="@(() => productToEdit.Price)" class="text-danger" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Category</label>
+                        @* Two-way binding for select dropdown *@
+                        <InputSelect @bind-Value="productToEdit.CatID" class="form-select">
+                            <option value="0">-- Select Category --</option>
+                            @foreach (var cat in categories)
+                            {
+                                <option value="@cat.Id">@cat.Name</option>
+                            }
+                        </InputSelect>
+                        <ValidationMessage For="@(() => productToEdit.CatID)" class="text-danger" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Image File Name</label>
+                        <InputText @bind-Value="productToEdit.Image" class="form-control" />
+                    </div>
+
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-success">Save Changes</button>
+                        <button type="button" class="btn btn-secondary ms-2" @onclick="CancelEdit">Cancel</button>
+                    </div>
+                </EditForm>
+            </div>
+            
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                @* Preview the image currently bound to the model *@
+                <div class="text-center">
+                    <h5>Image Preview</h5>
+                    <img src="/images/@productToEdit.Image" alt="Preview" class="img-thumbnail" style="max-height: 250px;" />
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning">Product not found.</div>
+    }
+</div>
