@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option csharp_namespace = "OrderService";
+
+service OrderService{
+	rpc CreateOrder(OrderRequest) returns(OrderResponse);
+}
+
+message OrderRequest{
+	int32 orderId = 1;
+	int32 userId = 2;
+	repeated OrderItem items = 3;	// List of items in the order
+	int32 price = 4;	// Total price of the order
+}
+
+message OrderItem{
+	int32 itemId = 1;
+	int32 quantity = 2;
+	int32 price = 3;	// Price of the individual item
+}
+
+message OrderResponse{
+	bool isSuccess = 1;
+	string message = 2;
+}
+

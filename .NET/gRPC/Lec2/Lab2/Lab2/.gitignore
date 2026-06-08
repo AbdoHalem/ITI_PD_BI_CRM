@@ -1,0 +1,5 @@
+.vs
+# Lab2.slnL*
+*/bin
+*/obj
+*/*.csproj*
