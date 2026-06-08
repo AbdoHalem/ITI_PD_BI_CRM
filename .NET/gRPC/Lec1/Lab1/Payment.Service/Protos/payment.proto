@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "Payment.Service.Protos";
+
+package payment;
+
+service Payment{
+	rpc DeductBalance(PaymentRequest) returns(PaymentResponse);
+}
+
+message PaymentRequest{
+	int32 orderId = 1;
+	int32 userId = 2;
+	double orderPrice = 3;
+}
+
+message PaymentResponse{
+	bool isSuccess = 1;
+	string message = 2;
+}

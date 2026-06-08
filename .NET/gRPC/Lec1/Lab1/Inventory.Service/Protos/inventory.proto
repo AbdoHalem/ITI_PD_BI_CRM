@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "Inventory.Service.Protos";
+
+package inventory;
+
+// The inventory service definition.
+service Inventory {
+	// Define the method that web API client will call
+	rpc DeductQuantity(InventoryRequest) returns(InventoryResponse);
+}
+
+// The request message containing the product ID and quantity to deduct.
+message InventoryRequest{
+	int32 itemId = 1;
+	int32 quantity = 2;
+}
+
+// The response message containing the success status and message.
+message InventoryResponse{
+	bool isSuccess = 1;
+	string message = 2;
+}
