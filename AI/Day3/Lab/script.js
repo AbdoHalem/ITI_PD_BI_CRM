@@ -3,10 +3,6 @@ let chatHistory = [];
 let currentMode = "chat";
 let lastGeneratedImageBlob = null;  // Store the last image as a file (Blob) for editing
 
-// Read the API from the config file
-// const CHAT_API_KEY = ; // API Key used in the demo
-// const IMAGE_API_KEY = "fw_JvNMh6eo3SZfQ8DBSfkhLk";
-
 // DOM Elements
 const modeSelector = document.getElementById("modeSelector");
 const chatForm = document.getElementById("chatForm");
