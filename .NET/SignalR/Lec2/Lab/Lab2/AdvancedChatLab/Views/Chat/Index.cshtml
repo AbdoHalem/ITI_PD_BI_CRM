@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Advanced Chat Lab";
+}
+
+@{
+    ViewData["Title"] = "Advanced Chat Lab";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4">
+            
+            <div class="card mb-3">
+                <div class="card-header">Create Room</div>
+                <div class="card-body">
+                    <input type="text" id="newRoomName" class="form-control mb-2" placeholder="Room Name..." />
+                    <button id="btnCreateRoom" class="btn btn-primary w-100">Create Room</button>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header">Public Chat (Rooms)</div>
+                <div class="card-body">
+                    <select id="roomSelect" class="form-select mb-2">
+                        <option value="">-- Select Room --</option>
+                        @foreach (var room in ViewBag.Rooms)
+                        {
+                            <option value="@room.Name">@room.Name</option>
+                        }
+                    </select>
+                    <button id="btnJoinRoom" class="btn btn-success w-100 mb-2">Join Room</button>
+                    
+                    <input type="text" id="publicMessage" class="form-control mb-2" placeholder="Message..." />
+                    <button id="btnSendPublic" class="btn btn-info w-100">Send Public Message</button>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header">Private Chat</div>
+                <div class="card-body">
+                    <select id="userSelect" class="form-select mb-2">
+                        <option value="">-- Select User --</option>
+                        @foreach (var user in ViewBag.Users)
+                        {
+                            <option value="@user.Id">@user.UserName</option>
+                        }
+                    </select>
+                    <input type="text" id="privateMessage" class="form-control mb-2" placeholder="Private Message..." />
+                    <button id="btnSendPrivate" class="btn btn-warning w-100">Send Private Message</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-8">
+            <div class="card h-100">
+                <div class="card-header bg-dark text-white">Chat & Notifications Board</div>
+                <div class="card-body" id="chatBoard" style="height: 500px; overflow-y: auto; background-color: #f8f9fa;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/chat.js"></script>
+}

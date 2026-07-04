@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "AdvancedChatLab.Desktop\\AdvancedChatLab.Desktop.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "AdvancedChatLab\\AdvancedChatLab.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
