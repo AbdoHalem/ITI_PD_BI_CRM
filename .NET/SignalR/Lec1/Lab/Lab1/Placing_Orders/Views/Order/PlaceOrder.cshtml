@@ -1,0 +1,21 @@
+﻿@model Order
+
+<div class="card p-4" style="width: 500px;">
+	<h3>Place Order</h3>
+	<form asp-action="PlaceOrder" method="post">
+		<div class="mb-3">
+			<label>Name</label>
+			<input asp-for="Name" class="form-control" />
+		</div>
+		<div class="mb-3">
+			<label>Item Name</label>
+			<input asp-for="ItemName" class="form-control" />
+		</div>
+		<div class="mb-3">
+			<label>Count</label>
+			<input asp-for="Count" class="form-control" />
+		</div>
+
+		<button type="submit" class="btn btn-primary">Place Order</button>
+	</form>
+</div>
